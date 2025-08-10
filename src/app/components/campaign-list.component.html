@@ -1,0 +1,9 @@
+<div class="campaign-list">
+    <h2>Campaigns</h2>
+    <div class="campaigns-container">
+        <mat-card class="campaign-card" *ngFor="let campaign of campaigns">
+            <mat-card-title>{{ campaign.id }}</mat-card-title>
+            <mat-card-subtitle>{{ campaign.name }}</mat-card-subtitle>
+        </mat-card>
+    </div>
+</div>
