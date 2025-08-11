@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   selector: 'app-test',
   standalone: true,
   templateUrl: './test.html',
-  styleUrls: ['./test.scss']
+  styleUrl: './test.scss',
 })
-export class Test {}
+
+export class Test {
+
+}

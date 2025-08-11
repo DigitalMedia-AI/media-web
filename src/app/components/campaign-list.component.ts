@@ -9,13 +9,12 @@ import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-campaign-list',
+  standalone: true,
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.css'],
   imports: [CommonModule, MatCardModule]//angular material imports
 })
 
-
-//gets and displays campaigns from the service
 export class CampaignListComponent implements OnInit {
   campaigns: Campaign[] = [];
 
