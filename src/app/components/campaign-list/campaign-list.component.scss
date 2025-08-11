@@ -1,0 +1,29 @@
+.campaigns-page {
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+.campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 8px;
+}
+
+.grid-header {
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 8px 0;
+  display: contents;
+}
+
+.grid-row {
+  display: contents;
+}
+
+.grid-row > div {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}

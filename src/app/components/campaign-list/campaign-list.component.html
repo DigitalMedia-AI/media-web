@@ -1,0 +1,29 @@
+<div class="campaigns-page">
+  <h1>Campaigns</h1>
+
+  <div class="campaigns-grid">
+    <div class="grid-header">
+      <div>ID</div>
+      <div>Name</div>
+      <div>Description</div>
+      <div>Status</div>
+      <div>Budget</div>
+      <div>Start Date</div>
+      <div>End Date</div>
+      <div>Created At</div>
+      <div>Updated At</div>
+    </div>
+
+    <div *ngFor="let campaign of campaigns" class="grid-row">
+      <div>{{ campaign.id }}</div>
+      <div>{{ campaign.name }}</div>
+      <div>{{ campaign.description }}</div>
+      <div>{{ campaign.status }}</div>
+      <div>{{ campaign.budget }}</div>
+      <div>{{ campaign.startDate | date }}</div>
+      <div>{{ campaign.endDate | date }}</div>
+      <div>{{ campaign.createdAt | date }}</div>
+      <div>{{ campaign.updatedAt || 'N/A' }}</div>
+    </div>
+  </div>
+</div>

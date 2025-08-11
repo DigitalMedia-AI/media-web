@@ -1,0 +1,73 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #2c3e50, #410049);
+}
+
+.login-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    margin: 60px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.forgot-password {
+    display: block;
+    margin-bottom: 20px;
+    color: #0072ff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.login-btn {
+    background: linear-gradient(to right, #00118e, #5c0074);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.social-login {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+p a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+}
