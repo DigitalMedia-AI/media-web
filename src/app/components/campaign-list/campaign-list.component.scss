@@ -1,29 +1,25 @@
-.campaigns-page {
-  padding: 24px;
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 50%;
+  margin: 50px, 50px, 0px, 50px;
 }
 
-h1 {
-  margin-bottom: 16px;
+.mat-mdc-table {
+  min-width: 0;
+  width: 100%;
+  margin: 0, 2%, 2%;
 }
 
-.campaigns-grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 8px;
+.table-container {
+  width:50%;
 }
 
-.grid-header {
-  font-weight: bold;
-  background-color: #f0f0f0;
-  padding: 8px 0;
-  display: contents;
-}
-
-.grid-row {
-  display: contents;
-}
-
-.grid-row > div {
-  padding: 8px 0;
-  border-bottom: 1px solid #ddd;
+.campaigns-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 92vh;
+  background: linear-gradient(to bottom, #001f3d, #3a3a3a);
 }

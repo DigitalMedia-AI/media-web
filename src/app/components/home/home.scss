@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: flex-start;
     width: 100vw;
-    height: 100vh;
-    background: linear-gradient(to right, #2c3e50, #410049);
+    height: 92vh;
+    background: linear-gradient(to bottom, #001f3d, #351a38);
 }
 
 .login-container {
@@ -14,7 +14,7 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 320px;
-    margin: 60px;
+    margin: 150px;
 }
 
 .input-group {
@@ -29,7 +29,7 @@
 }
 
 .input-group input {
-    width: 100%;
+    width: 92%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -44,7 +44,7 @@
 }
 
 .login-btn {
-    background: linear-gradient(to right, #00118e, #5c0074);
+    background: linear-gradient(to right, #001192, #280074);
     border: none;
     padding: 10px 20px;
     color: #fff;
