@@ -1,11 +1,19 @@
 <div class="nav-list">
     <nav class="navbar">
-        <div class="navbar__title">My Digital Media</div>
-        <div class="navbar__divider"></div>
-        <div class="navbar__links">
-            <a routerLink="/home" class="nav-item">Home</a>
-            <a routerLink="/campaigns" class="nav-item">Campagins</a>
-            <a routerLink="/about" class="nav-item">About</a>
+        <div class="navbar-title">My Digital Media</div>
+        <div class="navbar-divider"></div>
+        <div class="navbar-links">
+            <button matMiniFab routerLink="/home" class="nav-item">
+                <mat-icon>home</mat-icon>
+                <p>Home</p>
+            </button>
+            <button matMiniFab routerLink="/campaigns" class="nav-item">
+                <mat-icon>assignment</mat-icon>
+                <p>Campaign Dashboard</p>
+            </button>
+            <button matMiniFab class="nav-IconItem">
+                <mat-icon>menu</mat-icon>
+            </button>
         </div>
     </nav>
 </div>

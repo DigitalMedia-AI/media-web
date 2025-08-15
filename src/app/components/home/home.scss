@@ -1,20 +1,78 @@
 .home-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100vw;
     height: 92vh;
-    background: linear-gradient(to bottom, #001f3d, #351a38);
+    background: linear-gradient(to bottom, #0054ad, #001e3f);
+}
+
+.email-marketing {
+    width: 60%;
+    margin: 1%;
+    padding: 8rem 2rem 8rem 6rem;
+    text-align: left;
+    border-radius: 12px;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.email-marketing h1 {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.email-marketing .tagline {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    color: white;
+}
+
+.cta-button {
+    width: 35%;
+    height: 4.2rem;
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #00254d;
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease !important;
+
+    & :hover {
+        background-color: rgb(15, 40, 56) !important;
+    }
+}
+
+.section-divider {
+    height: 60px;
+    border-bottom: 2px solid #e0e0e0;
+    margin: 3rem 0;
 }
 
 .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+}
+
+.login-wrapper {
     background: #fff;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 320px;
-    margin: 150px;
 }
 
 .input-group {
