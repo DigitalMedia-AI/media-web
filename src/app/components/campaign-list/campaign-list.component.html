@@ -34,50 +34,99 @@
 
       <mat-form-field>
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium"
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. ium"
           #input>
       </mat-form-field>
 
-      <mat-table [dataSource]="dataSource" matSort
-        (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef mat-sort-header
-            sortActionDescription="Sort by number"> No. </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+        class="mat-elevation-z8">
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="id-column">
+            ID
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="id-column">
+            {{ element.id }}
+          </mat-cell>
         </ng-container>
 
-        <!-- Name Colunm -->
+        <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Name
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Name
           </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.name }}
+          </mat-cell>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <mat-header-cell matSort *matHeaderCellDef> Weight </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef class="desc-column">
+            Description
           </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.description }}
+          </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row (click)="navigateToCampaign(row)"
-          *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Status
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.status }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Budget Column -->
+        <ng-container matColumnDef="budget">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Budget
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.budget | currency }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Start Date Column -->
+        <ng-container matColumnDef="startDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Start Date
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.startDate | date:'mediumDate' }}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row
+          *matHeaderRowDef="displayedColumns">
+        </mat-header-row>
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (click)="navigateToCampaign(row)">
+        </mat-row>
       </mat-table>
 
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter
-          "{{input.value}}"</td>
+        <td
+          class="mat-cell"
+          [attr.colspan]="displayedColumns.length">
+          No data matching the filter "{{ input.value }}"
+        </td>
       </tr>
 
-      <mat-paginator [pageSizeOptions]="[1, 5, 10, 15]"
+      <mat-paginator
+        [pageSize]="5"
+        [pageSizeOptions]="[1, 5, 10, 15]"
         [showFirstLastButtons]="true"
         aria-label="Select page of campaigns">
       </mat-paginator>

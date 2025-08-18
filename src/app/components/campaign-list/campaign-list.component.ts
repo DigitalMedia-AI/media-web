@@ -1,26 +1,35 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { CampaignService } from '../../services/campaign-service';
 import { Campaign } from '../../models/campaignModels';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MaterialModule } from '../../material/material-module';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-
+import { MaterialModule } from '../../material/material-module';
+import { CurrencyPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.scss'],
-  imports: [MaterialModule],
+  imports: [MaterialModule, CurrencyPipe, DatePipe]
 })
 
-export class CampaignListComponent implements OnInit, AfterViewInit {
+export class CampaignListComponent
+  implements OnInit, AfterViewInit {
+  private _liveAnnouncer = inject(LiveAnnouncer);
 
-  private _liveannouncer = inject(LiveAnnouncer)
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  campaigns: Campaign[] = [];
+  displayedColumns = [
+    'id',
+    'name',
+    'description',
+    'status',
+    'budget',
+    'startDate'
+  ];
+
+  dataSource = new MatTableDataSource<Campaign>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,11 +37,11 @@ export class CampaignListComponent implements OnInit, AfterViewInit {
   constructor(private campaignService: CampaignService) { }
 
   ngOnInit(): void {
-    console.log('Fetching campaigns.. (campaign-list.component.ts)');
-    this.campaignService
-      .getAllCampaigns()
-      .subscribe((data: Campaign[]) => (this.campaigns = data)
-      );
+    this.campaignService.getAllCampaigns().subscribe
+    ({
+      next: (campaigns) => this.dataSource.data = campaigns, //this gets the data & sets it to the table source
+      error: () => this.dataSource.data = SAMPLE_CAMPAIGNS //this gets sample data incase the API call is broken, remember to delete before in porduction cuz its only for testing.
+    });
   }
 
   ngAfterViewInit() {
@@ -40,48 +49,133 @@ export class CampaignListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  navigateToCampaign(rowData: any) {
+  navigateToCampaign(rowData: Campaign) {
     console.log(rowData);
-    // Implement navigation logic here, I will prob use Router
-    // this.router.navigate(['/campaign', RowData.id]);
+    //this.router.navigate(['/campaign', row.id])
   }
 
-  applyFilter(searchTarget: Event) {
-    const filterValue = (searchTarget.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase();
+    this.dataSource.filter = filterValue;
+    this.dataSource.paginator?.firstPage();
   }
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
-      this._liveannouncer.announce(`Sorted ${sortState.direction}ending`);
+      this._liveAnnouncer.announce(
+        `Sorted ${sortState.direction}ending`
+      );
     } else {
-      this._liveannouncer.announce('Sorting cleared');
+      this._liveAnnouncer.announce('Sorting cleared');
     }
   }
 }
 
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+const SAMPLE_CAMPAIGNS: Campaign[] = [
+  {
+    id: 101,
+    name: 'Spring Launch',
+    description: 'Promoting new spring collection',
+    status: 'Active',
+    budget: 25000,
+    startDate: '2025-03-15'
+  },
+  {
+    id: 102,
+    name: 'Summer Sale',
+    description: 'Discounts on summer items',
+    status: 'Paused',
+    budget: 18000,
+    startDate: '2025-06-01'
+  },
+  {
+    id: 103,
+    name: 'Back to School',
+    description: 'Targeting students and parents',
+    status: 'Completed',
+    budget: 22000,
+    startDate: '2024-08-20'
+  },
+  {
+    id: 104,
+    name: 'Holiday Specials',
+    description: 'Seasonal promotions for holidays',
+    status: 'Active',
+    budget: 30000,
+    startDate: '2025-11-25'
+  },
+  {
+    id: 105,
+    name: 'Clearance Blitz',
+    description: 'End-of-season clearance push',
+    status: 'Paused',
+    budget: 12000,
+    startDate: '2025-01-10'
+  },
+  {
+    id: 106,
+    name: 'New Year Kickoff',
+    description: 'Start-of-year brand awareness',
+    status: 'Active',
+    budget: 27000,
+    startDate: '2025-01-01'
+  },
+  {
+    id: 107,
+    name: 'Valentine Vibes',
+    description: 'Romantic product promotions',
+    status: 'Completed',
+    budget: 15000,
+    startDate: '2025-02-10'
+  },
+  {
+    id: 108,
+    name: 'Easter Engagement',
+    description: 'Interactive Easter campaign',
+    status: 'Active',
+    budget: 20000,
+    startDate: '2025-04-01'
+  },
+  {
+    id: 109,
+    name: 'Mother’s Day Magic',
+    description: 'Celebrating moms with special offers',
+    status: 'Paused',
+    budget: 16000,
+    startDate: '2025-05-05'
+  },
+  {
+    id: 110,
+    name: 'Father’s Day Focus',
+    description: 'Gifts and gear for dads',
+    status: 'Completed',
+    budget: 14000,
+    startDate: '2025-06-10'
+  },
+  {
+    id: 111,
+    name: 'Autumn Arrivals',
+    description: 'Showcasing fall fashion',
+    status: 'Active',
+    budget: 28000,
+    startDate: '2025-09-01'
+  },
+  {
+    id: 112,
+    name: 'Black Friday Frenzy',
+    description: 'Massive discounts and flash sales',
+    status: 'Active',
+    budget: 50000,
+    startDate: '2025-11-28'
+  },
+  {
+    id: 113,
+    name: 'Cyber Monday Boost',
+    description: 'Online-only tech deals',
+    status: 'Paused',
+    budget: 35000,
+    startDate: '2025-12-01'
+  }
 ];
