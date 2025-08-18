@@ -1,48 +1,116 @@
 <div class="campaigns-container ">
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-  </mat-form-field>
+  <h1 class="campaigns-title">Dashboard</h1>
 
-  <div class="table-container">
-    <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell matSort *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol
-        </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row (click)="navigateToCampaign(row)"
-        *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr>
-
-    <mat-paginator [pageSizeOptions]="[1, 3, 5, 10]" [showFirstLastButtons]="true"
-      aria-label="Select page of campaigns">
-    </mat-paginator>
+  <div class="dashboard-container">
+    <div class="insight new">
+      <mat-icon class="insight-icon">notifications_active</mat-icon>
+      <div class="insight-value">6</div>
+      <div>New</div>
+    </div>
+    <div class="insight ongoing">
+      <mat-icon class="insight-icon">import_export</mat-icon>
+      <div class="insight-value">24</div>
+      <div>Ongoing</div>
+    </div>
+    <div class="insight delivered">
+      <mat-icon class="insight-icon">checkmark</mat-icon>
+      <div class="insight-value">138</div>
+      <div>Delivered</div>
+    </div>
+    <div class="insight reconciled">
+      <mat-icon class="insight-icon">loop</mat-icon>
+      <div class="insight-value">7</div>
+      <div>Reconciled</div>
+    </div>
+    <div class="insight performance">
+      <mat-icon class="insight-icon">trending_up</mat-icon>
+      <div class="insight-value">95%</div>
+      <div>Overall Performance</div>
+    </div>
   </div>
-</div>
+  <div class="main-container">
+    <div class="table-container">
+      <h2 class="table-title">My Campaigns</h2>
+
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium"
+          #input>
+      </mat-form-field>
+
+      <mat-table [dataSource]="dataSource" matSort
+        (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            sortActionDescription="Sort by number"> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Colunm -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell matSort *matHeaderCellDef> Weight </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="navigateToCampaign(row)"
+          *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter
+          "{{input.value}}"</td>
+      </tr>
+
+      <mat-paginator [pageSizeOptions]="[1, 5, 10, 15]"
+        [showFirstLastButtons]="true"
+        aria-label="Select page of campaigns">
+      </mat-paginator>
+    </div>
+    <div class="sidebar-container">
+      <h1 class="sidebar-title">Help & Support</h1>
+
+      <div class="header-pair">
+        <h2><mat-icon>arrow_right_alt</mat-icon>Cancel a Campaign</h2>
+        <h4>Cancel an ongoing Campaign.</h4>
+      </div>
+
+      <div class="header-pair">
+        <h2><mat-icon>arrow_right_alt</mat-icon>Replicate a Campaign</h2>
+        <h4>Campaign going strong? Replicate a Campaign to use as a template for
+          a new one.</h4>
+      </div>
+
+      <div class="header-pair">
+        <h2><mat-icon>arrow_right_alt</mat-icon>Pause or Resume a Campaign</h2>
+        <h4>Want a break? Pause or Resume an ongoing Campaign for an indefinite
+          time.</h4>
+      </div>
+
+      <div class="header-pair">
+        <h2><mat-icon>arrow_right_alt</mat-icon>View Campaign Reports</h2>
+        <h4>View important statistics regarding your Campaigns.</h4>
+      </div>
+
+      <div class="header-pair">
+        <h2><mat-icon>arrow_right_alt</mat-icon>Start a Campaign with AI
+          Support</h2>
+        <h4>Create a new Campaign with help of our AI Assistant!</h4>
+      </div>
+    </div>
+  </div>
