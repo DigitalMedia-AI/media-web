@@ -22,12 +22,15 @@ export class CampaignDesc {
   campaign!: Campaign;
 
   ngOnInit() {
-    this.campaignId = this.route.snapshot.paramMap.get('id')!;
-    this.campaignService.getAllCampaigns().subscribe(
-      campaigns => {
-        this.campaign = campaigns.find(c => c.id.toString() === this.campaignId)!;
+  this.campaignId = this.route.snapshot.paramMap.get('id')!;
+  this.campaignService.getCampaignById(Number(this.campaignId)).subscribe({
+      next: (data) => {
+        this.campaign = data;
+      },
+      error: (err) => {
+        console.error('Failed to fetch campaign:', err);
       }
-    );
+    });
 
     this.adlines = [
       {

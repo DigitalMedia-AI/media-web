@@ -107,6 +107,16 @@
           </mat-cell>
         </ng-container>
 
+        <!-- End Date Column -->
+        <ng-container matColumnDef="endDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            End Date
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.endDate | date:'mediumDate' }}
+          </mat-cell>
+        </ng-container>
+
         <mat-header-row
           *matHeaderRowDef="displayedColumns">
         </mat-header-row>

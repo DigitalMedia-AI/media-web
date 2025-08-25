@@ -4,7 +4,7 @@ export interface Campaign {
   description: string;
   startDate: string;
   endDate: string;
-  status: 'Active' | 'Paused' | 'Completed';
+  status: 'New' | 'Ongoing' | 'Delivered' | 'Reconciled';
   budget: number;
   targetAudience: string[];
   createdAt: string;
