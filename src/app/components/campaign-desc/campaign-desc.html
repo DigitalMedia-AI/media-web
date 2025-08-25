@@ -1,0 +1,120 @@
+<div class="campaign-container" *ngIf="campaign">
+
+    <div class="dashboard-container">
+        <div class="insight new">
+            <mat-icon class="insight-icon">notifications_active</mat-icon>
+            <div class="insight-value">6</div>
+            <div>New</div>
+        </div>
+        <div class="insight ongoing">
+            <mat-icon class="insight-icon">import_export</mat-icon>
+            <div class="insight-value">24</div>
+            <div>Ongoing</div>
+        </div>
+        <div class="insight delivered">
+            <mat-icon class="insight-icon">checkmark</mat-icon>
+            <div class="insight-value">138</div>
+            <div>Delivered</div>
+        </div>
+        <div class="insight reconciled">
+            <mat-icon class="insight-icon">loop</mat-icon>
+            <div class="insight-value">7</div>
+            <div>Reconciled</div>
+        </div>
+        <div class="insight performance">
+            <mat-icon class="insight-icon">trending_up</mat-icon>
+            <div class="insight-value">95%</div>
+            <div>Overall Performance</div>
+        </div>
+    </div>
+
+    <form class="campaign-form">
+        <h2>Campaign Details</h2>
+
+        <div class="form-group">
+            <label for="campaign-name">Name:</label>
+            <input id="campaign-name" type="text" [(ngModel)]="campaign.name"
+                name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="campaign-status">Status:</label>
+            <input id="campaign-status" type="text"
+                [(ngModel)]="campaign.status" name="status">
+        </div>
+
+        <div class="form-group">
+            <label for="campaign-budget">Budget:</label>
+            <input id="campaign-budget" type="text"
+                [(ngModel)]="campaign.budget" name="budget">
+        </div>
+
+        <div class="form-group">
+            <label for="campaign-start">Start Date:</label>
+            <input id="campaign-start" type="date"
+                [(ngModel)]="campaign.startDate" name="startDate">
+        </div>
+
+        <div class="form-group">
+            <label for="campaign-end">End Date:</label>
+            <input id="campaign-end" type="date" [(ngModel)]="campaign.endDate"
+                name="endDate">
+        </div>
+    </form>
+
+    <div class="adlines-section">
+        <h2>Ad Lines</h2>
+        <table class="adlines-table">
+            <thead>
+                <tr>
+                    <th>Line ID</th>
+                    <th>Platform</th>
+                    <th>Daily Budget</th>
+                    <th>Bidding Strategy</th>
+                    <th>Target KPI</th>
+                    <th>Type</th>
+                    <th>Target Value</th>
+                    <th>Countries</th>
+                    <th>Age Range</th>
+                    <th>Placements</th>
+                    <th>Frequency Cap/Day</th>
+                    <th>Flight Start</th>
+                    <th>Flight End</th>
+                    <th>Predicted Metrics</th>
+                    <th>Line Type</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let line of adlines">
+                    <td>{{ line.lineId }}</td>
+                    <td>{{ line.platform }}</td>
+                    <td>{{ line.dailyBudget }}</td>
+                    <td>{{ line.biddingStrategy }}</td>
+                    <td>{{ line.targetKpi?.type }}</td>
+                    <td>{{ line.targetKpi?.targetValue }}</td>
+                    <td>{{ line.countries.join(', ') }}</td>
+                    <td>{{ line.ageRange }}</td>
+                    <td>{{ line.placements.join(', ') }}</td>
+                    <td>{{ line.frequencyCapPerDay }}</td>
+                    <td>{{ line.flight?.start }}</td>
+                    <td>{{ line.flight?.end }}</td>
+                    <td>{{ line.predictedMetrics }}</td>
+                    <td>{{ line.lineType }}</td>
+                    <td>
+                        <!-- Example: show optional fields depending on platform -->
+                        <ng-container *ngIf="line.headlineStyle">Headline: {{
+                            line.headlineStyle }} </ng-container>
+                        <ng-container *ngIf="line.videoConcept">Video: {{
+                            line.videoConcept }} </ng-container>
+                        <ng-container *ngIf="line.creativeAngle">Creative: {{
+                            line.creativeAngle }} </ng-container>
+                        <ng-container *ngIf="line.cta">CTA: {{ line.cta
+                            }}</ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

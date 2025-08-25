@@ -1,0 +1,121 @@
+.campaign-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 90vw;
+    min-height: 92vh;
+    background: linear-gradient(to bottom, #ffffff, #cecece);
+    font-family: "Sansation", sans-serif;
+    padding: 3rem 5vw;
+}
+
+.campaign-form {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-form h2 {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.form-group label {
+    width: 150px;
+    font-weight: bold;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.adlines-section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.adlines-section h2 {
+    margin-bottom: 1rem;
+}
+
+.adlines-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.adlines-table th,
+.adlines-table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.adlines-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.adlines-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 4rem 1rem 1rem 1rem;
+    width: 55%;
+    border: 1px solid white;
+    border-radius: 1.5rem;
+    box-shadow: -10px -8px 10px rgba(119, 0, 255, 0.05);
+
+    .insight {
+        text-align: center;
+        margin: 10px;
+        flex: 1 1 150px;
+    }
+
+    .insight-icon {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .insight-value {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .new {
+        color: #ff9800;
+    }
+    .ongoing {
+        color: #4caf50;
+    }
+    .delivered {
+        color: #2196f3;
+    }
+    .reconciled {
+        color: #00bcd4;
+    }
+    .performance {
+        color: #e91e63;
+    }
+}

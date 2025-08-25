@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { MaterialModule } from "../material/material-module";
 
 @Component({
@@ -9,6 +9,6 @@ import { MaterialModule } from "../material/material-module";
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header {
 
+export class Header {
 }

@@ -9,6 +9,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButton } from '@angular/material/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 
 const MaterialComponents = [
@@ -23,6 +24,7 @@ const MaterialComponents = [
   MatButton,
   MatButtonModule,
   MatIconModule,
+  FormsModule,
 ];
 
 @NgModule({
