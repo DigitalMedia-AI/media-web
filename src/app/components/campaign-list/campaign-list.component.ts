@@ -8,13 +8,15 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MaterialModule } from '../../material/material-module';
 import { CurrencyPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { DecimalPipe  } from '@angular/common';
 import { Router } from '@angular/router';
+import { CampaignsStats } from '../../models/campaignsStatsModels';
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.scss'],
-  imports: [MaterialModule, CurrencyPipe, DatePipe,]
+  imports: [MaterialModule, CurrencyPipe, DatePipe, DecimalPipe]
 })
 
 export class CampaignListComponent
@@ -33,6 +35,8 @@ export class CampaignListComponent
 
   dataSource = new MatTableDataSource<Campaign>([]);
 
+  campaignsStats!: CampaignsStats;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -44,6 +48,16 @@ export class CampaignListComponent
         next: (campaigns) => this.dataSource.data = campaigns, //this gets the data & sets it to the table source
         //error: () => this.dataSource.data = SAMPLE_CAMPAIGNS //this gets sample data incase the API call is broken, remember to delete before in porduction cuz its only for testing.
       });
+
+    this.campaignService.getAllCampaignsStats().subscribe
+      ({
+          next: (stats) => {
+            this.campaignsStats = stats;
+          },
+          error: (err) => {
+            console.error('Failed to fetch campaign stats:', err);
+          }
+        });
   }
 
   ngAfterViewInit() {
