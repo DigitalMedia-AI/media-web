@@ -5,18 +5,20 @@ import { Header } from './header/header';
 import { CampaignListComponent } from "./components/campaign-list/campaign-list.component";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgIf } from '@angular/common';
+import { Sidebar } from "./sidebar/sidebar";
 
 const hideOnRoutes = ['/', '/home'];
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterOutlet, NgIf],
+  imports: [Header, RouterOutlet, NgIf, Sidebar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 
 export class App {
   showNavbar = false;
+  showSidebar = false;
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

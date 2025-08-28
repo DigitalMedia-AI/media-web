@@ -30,7 +30,9 @@ export class CampaignListComponent
     'status',
     'budget',
     'startDate',
-    'endDate'
+    'endDate',
+    'createdAt',
+    'targetAudience'
   ];
 
   dataSource = new MatTableDataSource<Campaign>([]);

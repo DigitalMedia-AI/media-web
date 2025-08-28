@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { MaterialModule } from "../material/material-module";
@@ -11,4 +11,10 @@ import { MaterialModule } from "../material/material-module";
 })
 
 export class Header {
+   @Output() toggleSidebar = new EventEmitter<void>();
+
+  onMenuClick() {
+    console.log("Toggling Sidebar")
+    this.toggleSidebar.emit();
+  }
 }

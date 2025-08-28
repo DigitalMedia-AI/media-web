@@ -5,27 +5,29 @@
     <div class="insight new">
       <mat-icon class="insight-icon">notifications_active</mat-icon>
       <div class="insight-value">{{ campaignsStats?.newCampaigns }}</div>
-      <div>New</div>
+      <h3>New</h3>
     </div>
     <div class="insight ongoing">
       <mat-icon class="insight-icon">import_export</mat-icon>
       <div class="insight-value">{{ campaignsStats?.ongoingCampaigns }}</div>
-      <div>Ongoing</div>
+      <h3>Ongoing</h3>
     </div>
     <div class="insight delivered">
       <mat-icon class="insight-icon">checkmark</mat-icon>
       <div class="insight-value">{{ campaignsStats?.deliveredCampaigns }}</div>
-      <div>Delivered</div>
+      <h3>Delivered</h3>
     </div>
     <div class="insight reconciled">
       <mat-icon class="insight-icon">loop</mat-icon>
       <div class="insight-value">{{ campaignsStats?.reconciledCampaigns }}</div>
-      <div>Reconciled</div>
+      <h3>Reconciled</h3>
     </div>
     <div class="insight performance">
       <mat-icon class="insight-icon">trending_up</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.overalPerformance | number:'1.2-2' }}%</div>
-      <div>Overall Performance</div>
+      <div class="insight-value">{{ campaignsStats?.overalPerformance |
+        number:'1.2-2' }}%
+      </div>
+      <h3>Overall Performance</h3>
     </div>
   </div>
   <div class="main-container">
@@ -117,6 +119,24 @@
           </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="createdAt">
+          <mat-header-cell *matHeaderCellDef class="createdAt-column">
+            Created At
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.createdAt }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="targetAudience">
+          <mat-header-cell *matHeaderCellDef class="targetAudience-column">
+            Target Audience
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.targetAudience }}
+          </mat-cell>
+        </ng-container>
+
         <mat-header-row
           *matHeaderRowDef="displayedColumns">
         </mat-header-row>
@@ -141,35 +161,37 @@
         aria-label="Select page of campaigns">
       </mat-paginator>
     </div>
-    <div class="sidebar-container">
-      <h1 class="sidebar-title">Help & Support</h1>
-
-      <div class="header-pair">
-        <h2><mat-icon>arrow_right_alt</mat-icon>Cancel a Campaign</h2>
-        <h4>Cancel an ongoing Campaign.</h4>
-      </div>
-
-      <div class="header-pair">
-        <h2><mat-icon>arrow_right_alt</mat-icon>Replicate a Campaign</h2>
-        <h4>Campaign going strong? Replicate a Campaign to use as a template for
-          a new one.</h4>
-      </div>
-
-      <div class="header-pair">
-        <h2><mat-icon>arrow_right_alt</mat-icon>Pause or Resume a Campaign</h2>
-        <h4>Want a break? Pause or Resume an ongoing Campaign for an indefinite
-          time.</h4>
-      </div>
-
-      <div class="header-pair">
-        <h2><mat-icon>arrow_right_alt</mat-icon>View Campaign Reports</h2>
-        <h4>View important statistics regarding your Campaigns.</h4>
-      </div>
-
-      <div class="header-pair">
-        <h2><mat-icon>arrow_right_alt</mat-icon>Start a Campaign with AI
-          Support</h2>
-        <h4>Create a new Campaign with help of our AI Assistant!</h4>
-      </div>
-    </div>
   </div>
+</div>
+
+<!-- <div class="sidebar-container">
+  <h1 class="sidebar-title">Help & Support</h1>
+
+  <div class="header-pair">
+    <h2><mat-icon>arrow_right_alt</mat-icon>Cancel a Campaign</h2>
+    <h4>Cancel an ongoing Campaign.</h4>
+  </div>
+
+  <div class="header-pair">
+    <h2><mat-icon>arrow_right_alt</mat-icon>Replicate a Campaign</h2>
+    <h4>Campaign going strong? Replicate a Campaign to use as a template for
+      a new one.</h4>
+  </div>
+
+  <div class="header-pair">
+    <h2><mat-icon>arrow_right_alt</mat-icon>Pause or Resume a Campaign</h2>
+    <h4>Want a break? Pause or Resume an ongoing Campaign for an indefinite
+      time.</h4>
+  </div>
+
+  <div class="header-pair">
+    <h2><mat-icon>arrow_right_alt</mat-icon>View Campaign Reports</h2>
+    <h4>View important statistics regarding your Campaigns.</h4>
+  </div>
+
+  <div class="header-pair">
+    <h2><mat-icon>arrow_right_alt</mat-icon>Start a Campaign with AI
+      Support</h2>
+    <h4>Create a new Campaign with help of our AI Assistant!</h4>
+  </div>
+</div> -->

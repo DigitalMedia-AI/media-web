@@ -1,0 +1,10 @@
+<div class="chat-sidebar">
+    <div class="chat-header">🤖 AI Assistant</div>
+    <div class="chat-messages">
+        <div class="message ai">Hi! What can I help you with?</div>
+    </div>
+    <div class="chat-input">
+        <input [(ngModel)]="userInput" placeholder="Type your message..." />
+        <button (click)="sendMessage()">Send</button>
+    </div>
+</div>

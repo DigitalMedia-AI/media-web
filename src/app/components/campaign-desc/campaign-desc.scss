@@ -12,9 +12,19 @@
 
 .campaign-form {
     background: #fff;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 16px;
+}
+
+.campaign-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .campaign-form h2 {
@@ -24,11 +34,16 @@
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin: 1rem 0.1rem 1rem 2rem;
+    gap:5%;
+    min-width: 40%;
+    background:linear-gradient(to right, rgb(255, 255, 255), rgb(236, 236, 236));
+    padding: 1rem;
+    font-family: "Sansation", sans-serif !important;
 }
 
 .form-group label {
-    width: 150px;
+    width: max-content;
     font-weight: bold;
 }
 
@@ -38,6 +53,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     background: #f9f9f9;
+    font-family: "Sansation", sans-serif !important;
 }
 
 .adlines-section {
@@ -45,6 +61,7 @@
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 16px;
 }
 
 .adlines-section h2 {

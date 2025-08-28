@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CampaignService } from '../../services/campaign-service';
 import { Campaign } from '../../models/campaignModels';
 import { CommonModule } from '@angular/common';
 import { AdLine } from '../../models/AdLinesModels';
 import { MaterialModule } from '../../material/material-module';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-campaign-desc',
+  providers: [provideNativeDateAdapter()],
   imports: [CommonModule, MaterialModule],
   templateUrl: './campaign-desc.html',
-  styleUrl: './campaign-desc.scss'
+  styleUrl: './campaign-desc.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CampaignDesc {
@@ -22,8 +25,8 @@ export class CampaignDesc {
   campaign!: Campaign;
 
   ngOnInit() {
-  this.campaignId = this.route.snapshot.paramMap.get('id')!;
-  this.campaignService.getCampaignById(Number(this.campaignId)).subscribe({
+    this.campaignId = this.route.snapshot.paramMap.get('id')!;
+    this.campaignService.getCampaignById(Number(this.campaignId)).subscribe({
       next: (data) => {
         this.campaign = data;
       },

@@ -1,5 +1,4 @@
-<div class="campaign-container" *ngIf="campaign">
-
+<div class="campaign-container">
     <div class="dashboard-container">
         <div class="insight new">
             <mat-icon class="insight-icon">notifications_active</mat-icon>
@@ -30,35 +29,69 @@
 
     <form class="campaign-form">
         <h2>Campaign Details</h2>
+        <div class="campaign-form-container">
+            <div class="form-group">
+                <label for="campaign-name">Name:</label>
+                <input id="campaign-name" type="text"
+                    [(ngModel)]="campaign.name"
+                    name="name">
+            </div>
 
-        <div class="form-group">
-            <label for="campaign-name">Name:</label>
-            <input id="campaign-name" type="text" [(ngModel)]="campaign.name"
-                name="name">
-        </div>
+            <div class="form-group">
+                <label for="campaign-description">Description:</label>
+                <textarea id="campaign-description"
+                    [(ngModel)]="campaign.description"
+                    name="description"></textarea>
+            </div>
 
-        <div class="form-group">
-            <label for="campaign-status">Status:</label>
-            <input id="campaign-status" type="text"
-                [(ngModel)]="campaign.status" name="status">
-        </div>
+            <div class="form-group">
+                <label for="campaign-status">Status:</label>
+                <select id="campaign-status" [(ngModel)]="campaign.status"
+                    name="status">
+                    <option value="New">New</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Reconciled">Reconciled</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="campaign-budget">Budget:</label>
-            <input id="campaign-budget" type="text"
-                [(ngModel)]="campaign.budget" name="budget">
-        </div>
+            <div class="form-group">
+                <label for="campaign-budget">Budget:</label>
+                <input id="campaign-budget" type="number"
+                    [(ngModel)]="campaign.budget" name="budget">
+            </div>
 
-        <div class="form-group">
-            <label for="campaign-start">Start Date:</label>
-            <input id="campaign-start" type="date"
-                [(ngModel)]="campaign.startDate" name="startDate">
-        </div>
+            <div class="form-group">
+                <label for="campaign-target">Target Audience:</label>
+                <input id="campaign-target" type="text"
+                    [(ngModel)]="campaign.targetAudience" name="targetAudience"
+                    placeholder="Ex:">
+            </div>
 
-        <div class="form-group">
-            <label for="campaign-end">End Date:</label>
-            <input id="campaign-end" type="date" [(ngModel)]="campaign.endDate"
-                name="endDate">
+            <div class="form-group">
+                <label for="campaign-start">Start Date:</label>
+                <input id="campaign-start" type="date"
+                    [(ngModel)]="campaign.startDate" name="startDate">
+            </div>
+
+            <div class="form-group">
+                <label for="campaign-end">End Date:</label>
+                <input id="campaign-end" type="date"
+                    [(ngModel)]="campaign.endDate"
+                    name="endDate">
+            </div>
+
+            <div class="form-group">
+                <label for="campaign-created">Created At:</label>
+                <input id="campaign-created" type="datetime-local"
+                    [(ngModel)]="campaign.createdAt" name="createdAt">
+            </div>
+
+            <div class="form-group">
+                <label for="campaign-updated">Updated At:</label>
+                <input id="campaign-updated" type="datetime-local"
+                    [(ngModel)]="campaign.updatedAt" name="updatedAt">
+            </div>
         </div>
     </form>
 
@@ -116,5 +149,4 @@
             </tbody>
         </table>
     </div>
-
 </div>

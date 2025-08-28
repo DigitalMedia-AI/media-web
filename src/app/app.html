@@ -1,7 +1,8 @@
 
 <main class="main">
-  <app-header *ngIf="showNavbar"></app-header>
+  <app-header (toggleSidebar)="showSidebar = !showSidebar" *ngIf="showNavbar"></app-header>
   <div class="content-container">
     <router-outlet></router-outlet>
+    <app-sidebar *ngIf="showSidebar"></app-sidebar>
   </div>
 </main>
