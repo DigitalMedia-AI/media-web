@@ -3,11 +3,23 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    max-width: 90vw;
+    max-width: 79vw;
     min-height: 92vh;
-    background: linear-gradient(to bottom, #ffffff, #cecece);
+    background: linear-gradient(to bottom, #ffffff, #e7e7e7);
     font-family: "Sansation", sans-serif;
-    padding: 3rem 5vw;
+    padding: 3rem 1vw 3rem 2vw;
+}
+
+.adLines-table {
+    min-width: 50%;
+    max-width: 90%;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.adLines-tbl-row {
+    font-size: 0.8rem;
 }
 
 .campaign-form {
@@ -35,11 +47,12 @@
     display: flex;
     align-items: center;
     margin: 1rem 0.1rem 1rem 2rem;
-    gap:5%;
+    gap: 5%;
     min-width: 40%;
-    background:linear-gradient(to right, rgb(255, 255, 255), rgb(236, 236, 236));
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(236, 236, 236));
     padding: 1rem;
     font-family: "Sansation", sans-serif !important;
+    border-radius: 2rem;
 }
 
 .form-group label {

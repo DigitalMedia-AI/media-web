@@ -6,12 +6,13 @@ import { CampaignListComponent } from "./components/campaign-list/campaign-list.
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgIf } from '@angular/common';
 import { Sidebar } from "./sidebar/sidebar";
+import { NgClass } from '@angular/common';
 
 const hideOnRoutes = ['/', '/home'];
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterOutlet, NgIf, Sidebar],
+  imports: [Header, RouterOutlet, NgIf, Sidebar, NgClass],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -23,6 +24,7 @@ export class App {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showNavbar = !hideOnRoutes.includes(event.url);
+        this.showSidebar = !hideOnRoutes.includes(event.url);
       }
     });
   }

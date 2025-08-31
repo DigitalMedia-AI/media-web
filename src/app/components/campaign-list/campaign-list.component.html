@@ -4,32 +4,32 @@
   <div class="dashboard-container">
     <div class="insight new">
       <mat-icon class="insight-icon">notifications_active</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.newCampaigns }}</div>
+      <div class="insight-value">{{ campaignsStats.newCampaigns }} </div>
       <h3>New</h3>
     </div>
     <div class="insight ongoing">
       <mat-icon class="insight-icon">import_export</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.ongoingCampaigns }}</div>
+      <div class="insight-value">{{ campaignsStats.ongoingCampaigns }} </div>
       <h3>Ongoing</h3>
     </div>
     <div class="insight delivered">
       <mat-icon class="insight-icon">checkmark</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.deliveredCampaigns }}</div>
+      <div class="insight-value">{{ campaignsStats.deliveredCampaigns }} </div>
       <h3>Delivered</h3>
     </div>
     <div class="insight reconciled">
       <mat-icon class="insight-icon">loop</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.reconciledCampaigns }}</div>
+      <div class="insight-value">{{ campaignsStats.reconciledCampaigns }} </div>
       <h3>Reconciled</h3>
     </div>
     <div class="insight performance">
       <mat-icon class="insight-icon">trending_up</mat-icon>
-      <div class="insight-value">{{ campaignsStats?.overalPerformance |
-        number:'1.2-2' }}%
-      </div>
+      <div class="insight-value">{{ campaignsStats.overalPerformance |
+        number:'1.2-2' }}% </div>
       <h3>Overall Performance</h3>
     </div>
   </div>
+
   <div class="main-container">
     <div class="table-container">
       <h2 class="table-title">My Campaigns</h2>

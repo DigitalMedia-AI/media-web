@@ -1,4 +1,4 @@
-.nav-list{
+.nav-list {
     display: none;
 }
 
@@ -12,7 +12,7 @@
     background: linear-gradient(to bottom, #0054ad, #001e3f);
 }
 
-.email-marketing {
+.title-screen {
     width: 60%;
     margin: 1%;
     padding: 8rem 2rem 8rem 6rem;
@@ -24,35 +24,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-}
 
-.email-marketing h1 {
-    font-size: 6rem;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-}
+    .title {
+        font-size: 6rem;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
 
-.email-marketing .tagline {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    line-height: 1.4;
-    color: white;
-}
+        span {
+            text-shadow: 4px 3px 0 rgba(255, 62, 229, 0.637); // solid shadow
+        }
+    }
 
-.cta-button {
-    width: 35%;
-    height: 4.2rem;
-    background-color: white !important;
-    color: black !important;
-    border: 1px solid #00254d;
-    border-radius: 2rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.6rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease !important;
+    .tagline {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        line-height: 1.4;
+        color: white;
+    }
 
-    & :hover {
-        background-color: rgb(15, 40, 56) !important;
+    .cta-button {
+        width: 35%;
+        height: 4.2rem;
+        background-color: white !important;
+        color: black !important;
+        border: 1px solid #00254d;
+        border-radius: 2rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease !important;
+
+        & :hover {
+            background-color: rgb(15, 40, 56) !important;
+        }
     }
 }
 

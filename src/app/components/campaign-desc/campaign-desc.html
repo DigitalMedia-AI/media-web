@@ -2,28 +2,32 @@
     <div class="dashboard-container">
         <div class="insight new">
             <mat-icon class="insight-icon">notifications_active</mat-icon>
-            <div class="insight-value">6</div>
-            <div>New</div>
+            <div class="insight-value">{{ campaignsStats.newCampaigns }} </div>
+            <h3>New</h3>
         </div>
         <div class="insight ongoing">
             <mat-icon class="insight-icon">import_export</mat-icon>
-            <div class="insight-value">24</div>
-            <div>Ongoing</div>
+            <div class="insight-value">{{ campaignsStats.ongoingCampaigns}}
+            </div>
+            <h3>Ongoing</h3>
         </div>
         <div class="insight delivered">
             <mat-icon class="insight-icon">checkmark</mat-icon>
-            <div class="insight-value">138</div>
-            <div>Delivered</div>
+            <div class="insight-value">{{campaignsStats.deliveredCampaigns}}
+            </div>
+            <h3>Delivered</h3>
         </div>
         <div class="insight reconciled">
             <mat-icon class="insight-icon">loop</mat-icon>
-            <div class="insight-value">7</div>
-            <div>Reconciled</div>
+            <div class="insight-value">{{ campaignsStats.reconciledCampaigns}}
+            </div>
+            <h3>Reconciled</h3>
         </div>
         <div class="insight performance">
             <mat-icon class="insight-icon">trending_up</mat-icon>
-            <div class="insight-value">95%</div>
-            <div>Overall Performance</div>
+            <div class="insight-value">{{ campaignsStats.overalPerformance |
+                number:'1.2-2' }}% </div>
+            <h3>Overall Performance</h3>
         </div>
     </div>
 
@@ -95,58 +99,103 @@
         </div>
     </form>
 
-    <div class="adlines-section">
-        <h2>Ad Lines</h2>
-        <table class="adlines-table">
-            <thead>
-                <tr>
-                    <th>Line ID</th>
-                    <th>Platform</th>
-                    <th>Daily Budget</th>
-                    <th>Bidding Strategy</th>
-                    <th>Target KPI</th>
-                    <th>Type</th>
-                    <th>Target Value</th>
-                    <th>Countries</th>
-                    <th>Age Range</th>
-                    <th>Placements</th>
-                    <th>Frequency Cap/Day</th>
-                    <th>Flight Start</th>
-                    <th>Flight End</th>
-                    <th>Predicted Metrics</th>
-                    <th>Line Type</th>
-                    <th>Other</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let line of adlines">
-                    <td>{{ line.lineId }}</td>
-                    <td>{{ line.platform }}</td>
-                    <td>{{ line.dailyBudget }}</td>
-                    <td>{{ line.biddingStrategy }}</td>
-                    <td>{{ line.targetKpi?.type }}</td>
-                    <td>{{ line.targetKpi?.targetValue }}</td>
-                    <td>{{ line.countries.join(', ') }}</td>
-                    <td>{{ line.ageRange }}</td>
-                    <td>{{ line.placements.join(', ') }}</td>
-                    <td>{{ line.frequencyCapPerDay }}</td>
-                    <td>{{ line.flight?.start }}</td>
-                    <td>{{ line.flight?.end }}</td>
-                    <td>{{ line.predictedMetrics }}</td>
-                    <td>{{ line.lineType }}</td>
-                    <td>
-                        <!-- Example: show optional fields depending on platform -->
-                        <ng-container *ngIf="line.headlineStyle">Headline: {{
-                            line.headlineStyle }} </ng-container>
-                        <ng-container *ngIf="line.videoConcept">Video: {{
-                            line.videoConcept }} </ng-container>
-                        <ng-container *ngIf="line.creativeAngle">Creative: {{
-                            line.creativeAngle }} </ng-container>
-                        <ng-container *ngIf="line.cta">CTA: {{ line.cta
-                            }}</ng-container>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h2>Advertisement Lines</h2>
+    <table mat-table [dataSource]="dataSource" matSort
+        class="adLines-table mat-elevation-z8">
+
+        <ng-container matColumnDef="lineId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Line ID</th>
+            <td mat-cell *matCellDef="let line">{{ line.lineId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="platform">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Platform</th>
+            <td mat-cell *matCellDef="let line">{{ line.platform }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dailyBudget">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Daily
+                Budget</th>
+            <td mat-cell *matCellDef="let line">{{ line.dailyBudget }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="biddingStrategy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Bidding
+                Strategy</th>
+            <td mat-cell *matCellDef="let line">{{ line.biddingStrategy }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="targetKpiType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>KPI Type</th>
+            <td mat-cell *matCellDef="let line">{{ line.targetKpi?.type }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="targetKpiValue">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>KPI Value</th>
+            <td mat-cell *matCellDef="let line">{{ line.targetKpi?.targetValue
+                }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="countries">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Countries</th>
+            <td mat-cell *matCellDef="let line">{{ line.countries.join(', ')
+                }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ageRange">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Age Range</th>
+            <td mat-cell *matCellDef="let line">{{ line.ageRange }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="placements">
+            <th mat-header-cell *matHeaderCellDef
+                mat-sort-header>Placements</th>
+            <td mat-cell *matCellDef="let line">{{ line.placements.join(', ')
+                }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="frequencyCapPerDay">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Freq/Day</th>
+            <td mat-cell *matCellDef="let line">{{ line.frequencyCapPerDay
+                }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="flightStart">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Start</th>
+            <td mat-cell *matCellDef="let line">{{ line.flight?.start }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="flightEnd">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>End</th>
+            <td mat-cell *matCellDef="let line">{{ line.flight?.end }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="predictedMetrics">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Predicted</th>
+            <td mat-cell *matCellDef="let line">{{ line.predictedMetrics }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lineType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Line Type</th>
+            <td mat-cell *matCellDef="let line">{{ line.lineType }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="other">
+            <th mat-header-cell *matHeaderCellDef>Other</th>
+            <td mat-cell *matCellDef="let line">
+                <ng-container *ngIf="line.headlineStyle">Headline: {{
+                    line.headlineStyle }} </ng-container>
+                <ng-container *ngIf="line.videoConcept">Video: {{
+                    line.videoConcept }} </ng-container>
+                <ng-container *ngIf="line.creativeAngle">Creative: {{
+                    line.creativeAngle }} </ng-container>
+                <ng-container *ngIf="line.cta">CTA: {{ line.cta
+                    }}</ng-container>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row class="adLines-tbl-row"
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>

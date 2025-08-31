@@ -8,7 +8,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MaterialModule } from '../../material/material-module';
 import { CurrencyPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { DecimalPipe  } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { CampaignsStats } from '../../models/campaignsStatsModels';
 
@@ -53,13 +53,13 @@ export class CampaignListComponent
 
     this.campaignService.getAllCampaignsStats().subscribe
       ({
-          next: (stats) => {
-            this.campaignsStats = stats;
-          },
-          error: (err) => {
-            console.error('Failed to fetch campaign stats:', err);
-          }
-        });
+        next: (stats) => {
+          this.campaignsStats = stats;
+        },
+        error: (err) => {
+          console.error('Failed to fetch campaign stats:', err);
+        }
+      });
   }
 
   ngAfterViewInit() {
