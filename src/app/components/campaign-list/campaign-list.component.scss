@@ -7,7 +7,7 @@
   max-width: 90vw;
   min-height: 92vh;
   height: max-content;
-  background: linear-gradient(to bottom, #ffffff, #cecece);
+  background: ghostwhite;
   font-family: "Sansation";
   padding: 3rem 10vw;
 
@@ -32,9 +32,7 @@
     width: 70%;
     border: 1px solid white;
     border-radius: 1.5rem;
-    box-shadow: -10px -8px 10px rgba(119, 0, 255, 0.05);
-
-    h3 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10%) h3 {
       font-size: 1.1rem;
     }
 
@@ -93,26 +91,40 @@
     width: 100%;
 
     .table-container {
-      width: 70%;
+      width: 75%;
       margin: 3rem 1rem;
       background-color: #fff;
       padding: 2rem 3rem;
       border-radius: 1rem;
-      box-shadow: -13px -11px 10px rgba(0, 89, 255, 0.06);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+
+      .campaigns-table {
+        overflow: auto;
+
+        mat-header-cell,
+        mat-cell {
+          min-width: 100px;
+        }
+      }
 
       .table-title {
         margin: 0 0 3rem 0;
       }
 
       .id-column {
-        max-width: 100px;
+        max-width: 50px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
-      mat-row{
-        cursor:pointer !important;
+      .desc-column {
+        max-width: 400px;
+        width: max-content;
+      }
+
+      mat-row {
+        cursor: pointer !important;
       }
     }
 
@@ -126,7 +138,7 @@
       padding: 1.5rem 2rem;
       border-radius: 1rem;
       margin: 3rem 1rem;
-      box-shadow: -10px -8px 10px rgba(0, 204, 255, 0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
     }
 
     .header-pair {
@@ -150,5 +162,74 @@
         font-weight: lighter;
       }
     }
+  }
+
+  .ad-lines-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 2rem;
+    margin: 2rem 1rem 1rem 1rem;
+    width: max-content;
+    gap: 5rem;
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #333;
+      font-family: "Sansation";
+    }
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    width: max-content;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10%);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .logo {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .rating .score {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .rating .stars {
+    color: #f5a623;
+    font-size: 14px;
+  }
+
+  .rating .reviews {
+    color: #888;
+    font-size: 12px;
   }
 }

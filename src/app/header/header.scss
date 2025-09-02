@@ -15,10 +15,9 @@ $font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
   padding: 0rem 2rem;
-  background-color: white;
+  background: linear-gradient(to bottom, white, ghostwhite);
   color: black;
   font-family: "Sansation";
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &-title {
     font-size: 1.5rem;
@@ -29,7 +28,7 @@ $font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   &-divider {
     height: 30px;
     width: 2px;
-    background:linear-gradient( to bottom,rgb(255, 186, 255), rgb(255, 0, 255), rgb(111, 0, 155) );
+    background: linear-gradient(to bottom, rgb(255, 186, 255), rgb(255, 0, 255), rgb(111, 0, 155));
   }
 
   &-links {
@@ -49,18 +48,15 @@ $font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     justify-content: center;
     align-items: center;
     margin: 0 1rem;
-    background-color: white;
+    background-color: transparent;
     color: rgb(39, 0, 34);
     text-decoration: none;
     font-size: 1.2rem;
     font-family: roboto;
-    border: 1px solid white;
+    border: 1px solid transparent;
     border-radius: 2rem;
     cursor: pointer;
-    transition:(
-      background-color,
-      border-color 0.3s ease
-    );
+    transition: (background-color, border-color 0.3s ease);
 
     &:hover {
       background-color: #d8d8d8;
@@ -73,10 +69,7 @@ $font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     border: 1px solid white;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
-    transition:(
-      background-color,
-      border-color 0.3s ease
-    );
+    transition: (background-color, border-color 0.3s ease);
 
     &:hover {
       background-color: #cccccc;

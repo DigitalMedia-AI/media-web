@@ -5,13 +5,11 @@
     width: 16vw;
     padding: 2vh 1vw;
     height: 96vh;
-    background-color: #1e1e2f;
-    color: white;
-
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to bottom, ghostwhite, rgba(76, 0, 255, 0.3));
+    color: black;
     display: flex;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .chat-header {
@@ -25,8 +23,8 @@
     padding: 0.1rem;
 }
 
-.message{
-    padding:1rem 0.5rem;
+.message {
+    padding: 1rem 0.5rem;
 }
 
 .user {
