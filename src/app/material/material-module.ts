@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatOption } from '@angular/material/core';
 
 
 const MaterialComponents = [
@@ -27,6 +28,7 @@ const MaterialComponents = [
   MatIconModule,
   FormsModule,
   MatDatepickerModule,
+  MatOption,
 ];
 
 @NgModule({

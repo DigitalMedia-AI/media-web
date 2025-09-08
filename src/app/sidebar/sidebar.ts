@@ -13,8 +13,9 @@ import { MessageModels } from '../models/messageModels';
 
 export class Sidebar {
   userInput = '';
+  isDarkTheme = false;
   messages: MessageModels[] = [
-    { sender: 'ai', text: 'Hi! What can I help you with?'}
+    { sender: 'ai', text: 'Hi! What can I help you with?' }
   ];
 
   sendMessage() {
@@ -27,6 +28,15 @@ export class Sidebar {
       }, 500);
 
       this.userInput = '';
+    }
+  }
+
+  toggleTheme() {
+    if (this.isDarkTheme) {
+      this.isDarkTheme = false;
+    }
+    else {
+      this.isDarkTheme = true;
     }
   }
 }

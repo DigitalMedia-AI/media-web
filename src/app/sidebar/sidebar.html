@@ -1,8 +1,15 @@
-<div class="chat-sidebar">
-    <div class="chat-header">🤖 AI Assistant</div>
+<div class="chat-sidebar" [ngClass]="{'dark-theme': isDarkTheme, 'light-theme': !isDarkTheme}">
+    <div class="chat-topbar">
+        <div class="chat-header">Media AI Assistant</div>
+        <button class="theme-toggle" (click)="toggleTheme()">
+            <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+    </div>
+
     <div class="chat-messages">
         <div class="chat-messages">
-            <div *ngFor="let msg of messages" [ngClass]="{'message': true, 'user': msg.sender === 'user', 'ai': msg.sender === 'ai'}">
+            <div *ngFor="let msg of messages"
+                [ngClass]="{'message': true, 'user': msg.sender === 'user', 'ai': msg.sender === 'ai'}">
                 {{ msg.text }}
             </div>
         </div>
