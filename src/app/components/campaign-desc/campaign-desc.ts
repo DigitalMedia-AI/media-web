@@ -26,7 +26,6 @@ export class CampaignDesc implements AfterViewInit {
   campaign!: Campaign;
   campaignsStats!: CampaignsStats;
   adlines: AdLine[] = [];
-  statusSelected!: string;
 
   displayedColumns: string[] = [
     'platform',
@@ -40,7 +39,6 @@ export class CampaignDesc implements AfterViewInit {
     'frequencyCapPerDay',
     'flightStart',
     'flightEnd',
-    'predictedMetrics',
     'lineType',
   ];
 
@@ -51,12 +49,23 @@ export class CampaignDesc implements AfterViewInit {
 
   constructor(private campaignService: CampaignService, private route: ActivatedRoute, private adLinesService: AdLinesService) { }
 
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
   ngOnInit() {
     this.campaignId = this.route.snapshot.paramMap.get('id')!;
     this.campaignService.getCampaignById(Number(this.campaignId)).subscribe({
       next: (data) => {
         this.campaign = data;
-        this.statusSelected = this.campaign.status;
       },
       error: (err) => {
         console.error('Failed to fetch campaign:', err);
@@ -93,7 +102,7 @@ export class CampaignDesc implements AfterViewInit {
         countries: ['UK', 'DE'],
         ageRange: '18-35',
         placements: ['GOOGLE_SEARCH'],
-        frequencyCapPerDay: null,
+        frequencyCapPerDay: 6,
         flight: { start: '2025-09-01', end: '2025-09-30' },
         predictedMetrics: "",
         lineType: 'GOOGLE_SEARCH',
@@ -103,19 +112,87 @@ export class CampaignDesc implements AfterViewInit {
           { term: 'eco-friendly water bottle', match: 'BROAD', intent: 'PURCHASE' },
           { term: 'sustainable gym bottle', match: 'PHRASE', intent: 'PURCHASE' }
         ]
+      },
+      {
+        lineId: 'line-2',
+        platform: 'META',
+        dailyBudget: '150',
+        biddingStrategy: 'MAXIMIZE_CONVERSIONS',
+        targetKpi: { type: 'CTR', targetValue: '2.50' },
+        countries: ['US', 'CA'],
+        ageRange: '25-45',
+        placements: ['FACEBOOK_FEED', 'INSTAGRAM_STORIES'],
+        frequencyCapPerDay: 3,
+        flight: { start: '2025-10-01', end: '2025-10-15' },
+        predictedMetrics: "",
+        lineType: 'SOCIAL_DISPLAY',
+        headlineStyle: 'EMOTIONAL_APPEAL',
+        descriptionStyle: 'BENEFIT_DRIVEN',
+        keywords: [
+          { term: 'organic skincare', match: 'BROAD', intent: 'AWARENESS' },
+          { term: 'natural face cream', match: 'PHRASE', intent: 'PURCHASE' }
+        ]
+      },
+      {
+        lineId: 'line-3',
+        platform: 'TIKTOK',
+        dailyBudget: '200',
+        biddingStrategy: 'TARGET_ROAS',
+        targetKpi: { type: 'ROAS', targetValue: '5.00' },
+        countries: ['AU', 'NZ'],
+        ageRange: '16-30',
+        placements: ['TIKTOK_FEED'],
+        frequencyCapPerDay: 2,
+        flight: { start: '2025-09-15', end: '2025-10-15' },
+        predictedMetrics: "",
+        lineType: 'SHORT_VIDEO',
+        headlineStyle: 'TREND_HIJACK',
+        descriptionStyle: 'STORYTELLING',
+        keywords: [
+          { term: 'wireless earbuds', match: 'BROAD', intent: 'PURCHASE' },
+          { term: 'best bluetooth headphones', match: 'PHRASE', intent: 'PURCHASE' }
+        ]
+      },
+      {
+        lineId: 'line-4',
+        platform: 'LINKEDIN',
+        dailyBudget: '400',
+        biddingStrategy: 'TARGET_CPC',
+        targetKpi: { type: 'CPC', targetValue: '2.00' },
+        countries: ['UK', 'IE'],
+        ageRange: '30-55',
+        placements: ['LINKEDIN_FEED'],
+        frequencyCapPerDay: 1,
+        flight: { start: '2025-11-01', end: '2025-11-30' },
+        predictedMetrics: "",
+        lineType: 'B2B_DISPLAY',
+        headlineStyle: 'AUTHORITY_BUILDING',
+        descriptionStyle: 'DATA_DRIVEN',
+        keywords: [
+          { term: 'enterprise CRM software', match: 'BROAD', intent: 'PURCHASE' },
+          { term: 'best CRM for sales teams', match: 'PHRASE', intent: 'PURCHASE' }
+        ]
+      },
+      {
+        lineId: 'line-5',
+        platform: 'GOOGLE',
+        dailyBudget: '250',
+        biddingStrategy: 'MAXIMIZE_CLICKS',
+        targetKpi: { type: 'CTR', targetValue: '3.00' },
+        countries: ['FR', 'ES'],
+        ageRange: '20-40',
+        placements: ['GOOGLE_DISPLAY'],
+        frequencyCapPerDay: 4,
+        flight: { start: '2025-09-20', end: '2025-10-20' },
+        predictedMetrics: "",
+        lineType: 'DISPLAY_BANNER',
+        headlineStyle: 'DISCOUNT_FOCUS',
+        descriptionStyle: 'VALUE_PROPOSITION',
+        keywords: [
+          { term: 'cheap flight deals', match: 'BROAD', intent: 'PURCHASE' },
+          { term: 'last minute holiday offers', match: 'PHRASE', intent: 'PURCHASE' }
+        ]
       }
     ];
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
   }
 }

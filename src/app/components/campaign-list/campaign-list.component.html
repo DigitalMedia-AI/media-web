@@ -126,7 +126,7 @@
             Created At
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.createdAt }}
+            {{ element.createdAt | date:'mediumDate' }}
           </mat-cell>
         </ng-container>
 
