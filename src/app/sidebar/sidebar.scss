@@ -11,7 +11,7 @@
 }
 
 .dark-theme {
-    background: #192b49;
+    background: linear-gradient(to bottom, #192b49, #2c4a83);
     color: white;
 }
 
@@ -73,7 +73,9 @@
 
 .chat-input {
     display: flex;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 12px;
     border: 1px solid gray;
     border-radius: 5rem;
@@ -87,6 +89,7 @@
     border: none;
     outline: none;
     background: transparent;
+    max-width: 60%;
 }
 
 .chat-input button {

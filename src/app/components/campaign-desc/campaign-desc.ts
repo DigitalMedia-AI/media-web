@@ -26,6 +26,7 @@ export class CampaignDesc implements AfterViewInit {
   campaign!: Campaign;
   campaignsStats!: CampaignsStats;
   adlines: AdLine[] = [];
+  statusSelected!: string;
 
   displayedColumns: string[] = [
     'platform',
@@ -55,6 +56,7 @@ export class CampaignDesc implements AfterViewInit {
     this.campaignService.getCampaignById(Number(this.campaignId)).subscribe({
       next: (data) => {
         this.campaign = data;
+        this.statusSelected = this.campaign.status;
       },
       error: (err) => {
         console.error('Failed to fetch campaign:', err);

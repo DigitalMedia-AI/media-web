@@ -25,7 +25,7 @@ export class Sidebar {
 
       setTimeout(() => {
         this.messages.push({ sender: 'ai', text: 'Got it! Let me think...' });
-      }, 500);
+      })
 
       this.userInput = '';
     }

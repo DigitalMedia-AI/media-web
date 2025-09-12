@@ -1,4 +1,5 @@
-<div class="chat-sidebar" [ngClass]="{'dark-theme': isDarkTheme, 'light-theme': !isDarkTheme}">
+<div class="chat-sidebar"
+    [ngClass]="{'dark-theme': isDarkTheme, 'light-theme': !isDarkTheme}">
     <div class="chat-topbar">
         <div class="chat-header">Media AI Assistant</div>
         <button class="theme-toggle" (click)="toggleTheme()">
@@ -14,8 +15,9 @@
             </div>
         </div>
     </div>
-    <div class="chat-input">
-        <input [(ngModel)]="userInput" placeholder="Type your message..." />
+    <div class="chat-input">   
+            <input matInput [(ngModel)]="userInput"
+                placeholder="Type your message..." />
         <button (click)="sendMessage()">Send</button>
     </div>
 </div>

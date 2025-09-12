@@ -12,14 +12,14 @@ const hideOnRoutes = ['/', '/home'];
 
 @Component({
   selector: 'app-root',
-  imports: [Header, RouterOutlet, NgIf, Sidebar, NgClass],
+  imports: [Header, RouterOutlet, Sidebar, NgClass],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 
 export class App {
-  showNavbar = false;
-  showSidebar = false;
+  showNavbar = true;
+  showSidebar = true;
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

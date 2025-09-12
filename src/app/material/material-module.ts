@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
 
 
 const MaterialComponents = [
@@ -29,6 +30,7 @@ const MaterialComponents = [
   FormsModule,
   MatDatepickerModule,
   MatOption,
+  MatSelect,
 ];
 
 @NgModule({
